@@ -4,8 +4,8 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:progectmanaging/core/domain/models/login_model.dart';
 import 'package:progectmanaging/core/resources/components/myWidget.dart';
-import 'package:progectmanaging/feature/auth/loginorder/bloc/login_bloc.dart';
-import 'package:progectmanaging/feature/auth/loginorder/signup_view.dart';
+import 'package:progectmanaging/feature/auth/login_order/bloc/login_bloc.dart';
+import 'package:progectmanaging/feature/auth/login_order/signup_view.dart';
 TextEditingController emailcontroller=TextEditingController();
 TextEditingController passwordcontroller=TextEditingController();
 
@@ -16,7 +16,8 @@ class LoginView extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: ( context) =>LoginBloc(),
-      child: Scaffold(
+      child:Builder(builder: (BuildContext context ){BuildContext rootContext=context;
+      return  Scaffold(
         backgroundColor: Color(0xff0A324D),
         body: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -154,7 +155,8 @@ class LoginView extends StatelessWidget {
              MyRichText(text1: "Don’t have an account ?  ", text2: "Sign Up")
           ],
         ),
-      ),
+      );
+      })
     );
   }
 }
