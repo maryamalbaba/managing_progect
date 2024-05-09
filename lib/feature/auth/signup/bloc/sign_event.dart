@@ -3,7 +3,7 @@ part of 'sign_bloc.dart';
 
 @immutable
 sealed class SignEvent {}
-class Signup_Sending {
+class Signup_Sending extends SignEvent  {
   SignUpModel user;
   Signup_Sending({
     required this.user,

@@ -92,6 +92,7 @@ final  TextEditingController controller;
           ),
           color: Color(0xff77C1C1)),
       child: TextField(
+        controller: controller,
         decoration:  InputDecoration(
             hintText: HintText,
             hintStyle: TextStyle(color: Color(0xff0A324D), fontSize: 15),
