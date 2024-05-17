@@ -15,3 +15,6 @@ class Second_event extends appManagerEvent {
 class SigendUp_event extends appManagerEvent {
 
 }
+class CheckTokenEvent extends appManagerEvent {
+
+}

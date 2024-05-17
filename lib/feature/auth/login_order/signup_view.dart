@@ -160,6 +160,7 @@ class SignupView extends StatelessWidget {
                     style: ElevatedButton.styleFrom(
                         backgroundColor: Color(0xffFFEACD)),
                     onPressed: () {
+                      
                       context.read<SignBloc>().add(Signup_Sending(
                               user: SignUpModel(
                             email: emailcontroller.text,

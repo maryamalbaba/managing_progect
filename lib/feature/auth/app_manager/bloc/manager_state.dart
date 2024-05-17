@@ -9,3 +9,8 @@ class HeLoggedIn extends appManagerState {}
 class SecondTime_stste extends appManagerState {}
 
 class HeSigendUp_state extends appManagerState {}
+class CheckTokenState extends appManagerState {
+  final String token;
+
+  CheckTokenState({required this.token});
+}

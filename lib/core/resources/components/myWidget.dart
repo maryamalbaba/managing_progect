@@ -1,6 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 import 'package:progectmanaging/core/resources/colors/mycolor.dart';
 
@@ -78,8 +79,8 @@ class MyTextField extends StatelessWidget {
     required this.HintText,
     required this.controller,
   }) : super(key: key);
-final String HintText;
-final  TextEditingController controller;
+  final String HintText;
+  final TextEditingController controller;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -93,10 +94,91 @@ final  TextEditingController controller;
           color: Color(0xff77C1C1)),
       child: TextField(
         controller: controller,
-        decoration:  InputDecoration(
+        decoration: InputDecoration(
             hintText: HintText,
             hintStyle: TextStyle(color: Color(0xff0A324D), fontSize: 15),
             border: OutlineInputBorder(borderSide: BorderSide.none)),
+      ),
+    );
+  }
+}
+
+class whitTextField extends StatelessWidget {
+  whitTextField({
+    Key? key,
+    required this.text,
+    required this.hieght,
+  }) : super(key: key);
+  final TextEditingController text;
+  final double hieght;
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 310,
+      height: hieght,
+      decoration:
+          BoxDecoration(borderRadius: BorderRadius.circular(20), color: white),
+      child: TextField(
+        decoration: InputDecoration(border: InputBorder.none),
+        controller: text,
+      ),
+    );
+  }
+}
+
+class create_container extends StatelessWidget {
+  create_container({
+    Key? key,
+    required this.text,
+  }) : super(key: key);
+  final String text;
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 283,
+      height: 60,
+      decoration:
+          BoxDecoration(borderRadius: BorderRadius.circular(20), color: biege),
+      child: Center(
+          child: Text(
+        text,
+        style: TextStyle(
+            color: blackblue, fontSize: 30, fontWeight: FontWeight.w500),
+      )),
+    );
+  }
+}
+
+class add_task_inpro_container extends StatelessWidget {
+  add_task_inpro_container({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.all(14),
+      width: 600,
+      height: 70,
+      decoration:
+          BoxDecoration(borderRadius: BorderRadius.circular(10), color: purple),
+      child: Container(
+        width: 500,
+        height: 50,
+        decoration: BoxDecoration(
+          color: white,
+        ),
+        child: Padding(
+          padding: const EdgeInsets.only(top: 20),
+          child: Container(
+            width: 444,
+            height: 40,
+            decoration: BoxDecoration(),
+            child: TextField(
+              decoration: InputDecoration(
+                border: UnderlineInputBorder(),
+              ),
+            ),
+          ),
+        ),
       ),
     );
   }
