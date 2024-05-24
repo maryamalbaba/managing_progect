@@ -10,21 +10,20 @@ part 'task_state.dart';
 class TaskBloc extends Bloc<TaskEvent, TaskState> {
   TaskBloc() : super(TaskInitial_state()) {
      List<Addtaskmodel> temp =[];
-    on<Get_tasks_for_pro_event>((event, emit)
-     async{
-      dynamic result = await gettask_service ();
-  if(result is bool){
-    emit(Errorgettask_state());
-  }
-  else{
-    emit(Succesgettask_state());
-  }
-    });
-    
-    on<addtasks_event>((event, emit)async{
-      dynamic result2=await add_new_tasks(event.task);
-      if(result2  ){emit(Succes_add_task_state(temp: temp));}
-      else{emit(ErrorAddTask());}
-    });
+     on<AddingTextField>((event, emit){
+      emit(NewTextFieldCreated(tasks: temp));
+     });
+  
+on<SubmitiedTask>((event,state){
+  temp.last=event.onTaskSubmitted;
+  emit(oneTaskSubmited());
+  emit(NewTextFieldCreated(tasks: temp));
+});
+
+
+on<Send_All_Tasks_for_One_pro>((event,emit){
+  
+});
   }
 }
+

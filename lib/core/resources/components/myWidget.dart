@@ -2,6 +2,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:progectmanaging/core/domain/models/taskss/bases_model.dart';
+import 'package:progectmanaging/core/resources/asset_helper/images_name.dart';
 
 import 'package:progectmanaging/core/resources/colors/mycolor.dart';
 
@@ -114,11 +116,12 @@ class whitTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 310,
+      width: 271,
       height: hieght,
       decoration:
-          BoxDecoration(borderRadius: BorderRadius.circular(20), color: white),
+          BoxDecoration(borderRadius: BorderRadius.circular(15), color: white),
       child: TextField(
+        maxLines: 10,
         decoration: InputDecoration(border: InputBorder.none),
         controller: text,
       ),
@@ -181,5 +184,55 @@ class add_task_inpro_container extends StatelessWidget {
         ),
       ),
     );
+  }
+}
+
+class confirm extends StatelessWidget {
+  
+
+  @override
+  Widget build(BuildContext context) {
+    return  Center(
+                  child: Container(
+                    
+                    width: 271,
+                    height: 49,
+                    decoration: BoxDecoration(
+                      color:blackblue,
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(15),
+                        ),
+                      ),
+                   
+                      
+                    
+                      child: Center(child: Text("Confirm",style: TextStyle(color: white,fontSize: 25),),)),
+                   
+                  );
+               
+;
+  }
+}
+class DottedContainer extends StatelessWidget {
+  const DottedContainer({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 283,
+      height: 60,
+      decoration: BoxDecoration(image: DecorationImage(image: AssetImage(ImagesName.dotted))),
+  
+  child: Center(
+    child: Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+    
+      children: [
+        Container(width: 35,height: 35,
+         decoration: BoxDecoration(image: DecorationImage(image: AssetImage(ImagesName.plus))),)
+     
+     ,Text("Join",style: TextStyle(color: white,fontSize: 25,fontWeight: FontWeight.w500),) ],
+    ),
+  ),  );
   }
 }

@@ -3,19 +3,14 @@ part of 'task_bloc.dart';
 
 @immutable
 sealed class TaskEvent {}
-class Get_tasks_for_pro_event extends TaskEvent{
-  List<gettasks>taskList;
 
- Get_tasks_for_pro_event.Get_tasks_for_pro_event({
-    required this.taskList,
-  });
 
-}
-class addtasks_event extends TaskEvent {
-  Addtaskmodel task;
-  addtasks_event({
-    required this.task,
+class AddingTextField extends TaskEvent{}
+class SubmitiedTask extends TaskEvent {
+Addtaskmodel onTaskSubmitted;
+  SubmitiedTask({
+    required this.onTaskSubmitted,
   });
-  
-  
+ 
 }
+class Send_All_Tasks_for_One_pro extends TaskEvent{}

@@ -1,7 +1,9 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
 
-class gettasks {
+import 'package:progectmanaging/core/domain/models/taskss/bases_model.dart';
+
+class gettasks  extends ResultModel{
 num id;
 String title;
 String description;

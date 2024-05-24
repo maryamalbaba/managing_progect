@@ -12,7 +12,7 @@ class EditProjectstate extends ProgectblocState{}
 class Deletprojectstate extends ProgectblocState{}
 class GetOneProjectstate extends ProgectblocState{}
 class AddProjectstate extends ProgectblocState {
-  String id;
+  num id;
   AddProjectstate({
     required this.id,
   });

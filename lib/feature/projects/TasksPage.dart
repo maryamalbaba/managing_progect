@@ -7,8 +7,10 @@ import 'package:progectmanaging/core/resources/colors/mycolor.dart';
 import 'package:progectmanaging/feature/tasks/bloc/task_bloc.dart';
 
 class TasksPage extends StatelessWidget {
+  TextEditingController taskController = TextEditingController();
   TasksPage({super.key, required this.id});
-  final String id;
+  final num id;
+  String temp = "";
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -16,68 +18,67 @@ class TasksPage extends StatelessWidget {
       //..add((Get_tasks_for_pro_event.Get_tasks_for_pro_event(taskList: []))),
       child: Builder(builder: (context) {
         return Scaffold(
-          body: BlocBuilder<TaskBloc, TaskState>(
-            builder: (context, state) {
-              if (state is Succes_add_task_state) {
-                print("Succesgettask_state");
-
-                return Container(
-                  width: double.infinity,
-                  height: double.infinity,
-                  decoration: BoxDecoration(
-                    color: blackblue,
-                  ),
-                  child: Column(
-                    children: [
-                      Text(
-                        "Tasks",
-                        style: TextStyle(
-                            color: white, fontWeight: FontWeight.w600),
-                      ),
-                      InkWell(
-                        onTap: () {
-                          context.read<TaskBloc>().add(addtasks_event(
-                              task: Addtaskmodel(
-                                  taskDescription: '',
-                                  taskStatus: "NEW",
-                                  project_id: num.parse(id))));
-
-                          ListView.builder(
-                              itemCount: 3,
-                              //state.taskList.length,
-                              itemBuilder: (context, index) {
-                                return Container(
-                                  width: 215,
-                                  height: 50,
-                                  decoration: BoxDecoration(
-                                    color: purple,
-                                  ),
-                                  child: Text("tt"
-                                      //  state.taskList[index].description
-                                      ),
-                                );
-                              });
-                        },
-                        child: Container(
-                          width: 50,
-                          height: 30,
-                          decoration: BoxDecoration(
-                              image: DecorationImage(
-                                  image: AssetImage("assets/plus.png"))),
-                        ),
-                      ),
-                    ],
-                  ),
-                );
-              } else {
-                print("error ");
-                return Center(
-                    child: Text(
-                  "some thing wrong",
-                  style: TextStyle(color: Colors.pink),
-                ));
-              }
-            },
+          body: Column(
+            children: [
+              FloatingActionButton(onPressed: () {
+                if (taskController.text == "" || taskController.text == null) {
+                 print("if because the controller is null");
+                  context.read<TaskBloc>().add(AddingTextField());
+                  taskController.clear();
+                  
+                } else {
+                  temp = taskController.text;
+                  context.read<TaskBloc>().add(SubmitiedTask(
+                      onTaskSubmitted: Addtaskmodel(
+                          taskDescription: taskController.text,
+                          taskStatus: "NEW",
+                          project_id: id)));
+                }
+              }),
+              BlocBuilder<TaskBloc, TaskState>(
+                builder: (context, state) {
+                  if (state is NewTextFieldCreated) {
+                      return Expanded(child: ListView.builder(
+                    itemCount: state.tasks.length,
+                    itemBuilder: (context,index){
+                      return Container(
+      padding: EdgeInsets.all(14),
+      width: 600,
+      height: 70,
+      decoration:
+          BoxDecoration(borderRadius: BorderRadius.circular(10), color: purple),
+      child: Container(
+        width: 500,
+        height: 50,
+        decoration: BoxDecoration(
+          color: white,
+        ),
+        child: Padding(
+          padding: const EdgeInsets.only(top: 20),
+          child: Container(
+            width: 444,
+            height: 40,
+            decoration: BoxDecoration(),
+            child: TextField(
+              controller: (state.tasks.length-1==index)?taskController:null,
+              decoration: InputDecoration(
+                border: UnderlineInputBorder(),
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+                    }));
+                    
+                  } else {
+                    print("no tasks add");
+                    return Container();
+                  }
+                
+                },
+              )
+            ],
           ),
         );
       }),

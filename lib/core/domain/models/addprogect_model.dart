@@ -1,40 +1,41 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
 
-class progectmodel {
-String projectName;
-String projectDescription;
-String projectStatus;
+import 'package:progectmanaging/core/domain/models/taskss/bases_model.dart';
+
+class progectmodel extends ResultModel {
+String name;
+String description;
+String status;
 String createdBy;
-String lastModifiedBy;
+String lastModified;
 num id;
 String createDate;
   progectmodel({
-    required this.projectName,
-    required this.projectDescription,
-    required this.projectStatus,
+    required this.name,
+    required this.description,
+    required this.status,
     required this.createdBy,
-    required this.lastModifiedBy,
+    required this.lastModified,
     required this.id,
     required this.createDate,
   });
-  
 
   progectmodel copyWith({
-    String? projectName,
-    String? projectDescription,
-    String? projectStatus,
+    String? name,
+    String? description,
+    String? status,
     String? createdBy,
-    String? lastModifiedBy,
+    String? lastModified,
     num? id,
     String? createDate,
   }) {
     return progectmodel(
-      projectName: projectName ?? this.projectName,
-      projectDescription: projectDescription ?? this.projectDescription,
-      projectStatus: projectStatus ?? this.projectStatus,
+      name: name ?? this.name,
+      description: description ?? this.description,
+      status: status ?? this.status,
       createdBy: createdBy ?? this.createdBy,
-      lastModifiedBy: lastModifiedBy ?? this.lastModifiedBy,
+      lastModified: lastModified ?? this.lastModified,
       id: id ?? this.id,
       createDate: createDate ?? this.createDate,
     );
@@ -42,11 +43,11 @@ String createDate;
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'projectName': projectName,
-      'projectDescription': projectDescription,
-      'projectStatus': projectStatus,
+      'name': name,
+      'description': description,
+      'status': status,
       'createdBy': createdBy,
-      'lastModifiedBy': lastModifiedBy,
+      'lastModified': lastModified,
       'id': id,
       'createDate': createDate,
     };
@@ -54,11 +55,11 @@ String createDate;
 
   factory progectmodel.fromMap(Map<String, dynamic> map) {
     return progectmodel(
-      projectName: map['projectName'] as String,
-      projectDescription: map['projectDescription'] as String,
-      projectStatus: map['projectStatus'] as String,
+      name: map['name'] as String,
+      description: map['description'] as String,
+      status: map['status'] as String,
       createdBy: map['createdBy'] as String,
-      lastModifiedBy: map['lastModifiedBy'] as String,
+      lastModified: map['lastModified'] as String,
       id: map['id'] as num,
       createDate: map['createDate'] as String,
     );
@@ -70,7 +71,7 @@ String createDate;
 
   @override
   String toString() {
-    return 'progectmodel(projectName: $projectName, projectDescription: $projectDescription, projectStatus: $projectStatus, createdBy: $createdBy, lastModifiedBy: $lastModifiedBy, id: $id, createDate: $createDate)';
+    return 'progectmodel(name: $name, description: $description, status: $status, createdBy: $createdBy, lastModified: $lastModified, id: $id, createDate: $createDate)';
   }
 
   @override
@@ -78,22 +79,22 @@ String createDate;
     if (identical(this, other)) return true;
   
     return 
-      other.projectName == projectName &&
-      other.projectDescription == projectDescription &&
-      other.projectStatus == projectStatus &&
+      other.name == name &&
+      other.description == description &&
+      other.status == status &&
       other.createdBy == createdBy &&
-      other.lastModifiedBy == lastModifiedBy &&
+      other.lastModified == lastModified &&
       other.id == id &&
       other.createDate == createDate;
   }
 
   @override
   int get hashCode {
-    return projectName.hashCode ^
-      projectDescription.hashCode ^
-      projectStatus.hashCode ^
+    return name.hashCode ^
+      description.hashCode ^
+      status.hashCode ^
       createdBy.hashCode ^
-      lastModifiedBy.hashCode ^
+      lastModified.hashCode ^
       id.hashCode ^
       createDate.hashCode;
   }

@@ -50,9 +50,10 @@ class Addproview extends StatelessWidget {
                 BlocListener<ProgectblocBloc, ProgectblocState>(
                   listener: (context, state) {
                     if (state is AddProjectstate) {
-                      
+                      print("state is addpro");
                          Navigator.push(context,
                           MaterialPageRoute(builder: (context) => TasksPage(id:state.id)));
+                          
                     }
                   },
                   child: Padding(
@@ -60,7 +61,9 @@ class Addproview extends StatelessWidget {
                     child: InkWell(
                         onTap: () {
                           context.read<ProgectblocBloc>().add(
-                            AddProjectevent(pro: project(projectName: projectname_controller.text, projectDescription: projectscript_controller.text, projectStatus: '')
+                            AddProjectevent(pro: project(projectName: projectname_controller.text, projectDescription: projectscript_controller.text, projectStatus: 'NEW',
+                            
+                            )
                           )); 
                           print("project add");
                           // Navigator.push(context, MaterialPageRoute(builder: (context)=>TasksPage()));

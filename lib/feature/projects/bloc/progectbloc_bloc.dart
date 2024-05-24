@@ -11,11 +11,15 @@ class ProgectblocBloc extends Bloc<ProgectblocEvent, ProgectblocState> {
   ProgectblocBloc() : super(ProgectblocInitial()) {
     on<AddProjectevent>((event, emit) async {
        var response=await addnew_progect(event.pro);
+       print("AddProjectevent ");
        if(response.id != -1)
-      emit(AddProjectstate(id: response.id.toString()));
+      emit(AddProjectstate(id: response.id));
       
 
-      else{return;}
+      else{
+        print("else in AddProjectevent");
+        return;
+        }
     });
   }
 }
