@@ -2,12 +2,11 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:progectmanaging/core/config/get_it_class.dart';
 import 'package:progectmanaging/core/domain/models/addprogect_model.dart';
+import 'package:progectmanaging/core/domain/models/message_mode.dart';
 import 'package:progectmanaging/core/domain/models/project.dart';
 import 'package:progectmanaging/core/domain/models/taskss/addtask.dart';
 import 'package:progectmanaging/core/domain/models/taskss/bases_model.dart';
 import 'package:progectmanaging/core/domain/models/taskss/gettasks.dart';
-
-
 
 Future<progectmodel> addnew_progect(project pro) async {
   Dio dio = Dio();
@@ -16,9 +15,10 @@ Future<progectmodel> addnew_progect(project pro) async {
       "https://projects-management-system.onrender.com/api/v1/projects",
       options: Options(headers: {
         "Authorization":
-            "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtYXJ5YW1tbW1tQGdtYWlsLmNvbSIsImlhdCI6MTcxNTk1MzE4NiwiZXhwIjoxNzE2NTU3OTg2fQ.jSyYB34tjPbDpmI9ppzAFaMdjOJ4MQH_0YhXXkG1UhI"
+            "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzdHJpbjMzZ0BnbWFpbC5jb20iLCJpYXQiOjE3MTY3MjYwMjUsImV4cCI6MTcxNzMzMDgyNX0.P04n1Xe2BTYHmwOkA3YTi2ohhU3jSufb_5Jlb8Fc-k4"
       }),
       data: pro.toMap());
+  print(response);
 
   if (response.statusCode == 200) {
     print(response.data);
@@ -34,7 +34,6 @@ Future<progectmodel> addnew_progect(project pro) async {
         lastModified: 'lastModifiedBy',
         id: -1,
         createDate: 'createDate');
-
   }
 }
 
@@ -52,7 +51,7 @@ Future<bool> add_new_tasks(Addtaskmodel t) async {
   }
 }
 
-  gettask_service() async {
+gettask_service() async {
   try {
     Dio dio = Dio();
     print("enter in service get task");
@@ -77,28 +76,25 @@ Future<ResultModel> join_progect(progectmodel p) async {
     Dio dio = Dio();
     print("join_progect");
     Response response = await dio.post(
-        "https://projects-management-system.onrender.com/api/v1/projects/{id}",
+        "https://projects-management-system.onrender.com/api/v1/projects/${p.id.toInt()}/new-user-to-project",
         options: Options(
           headers: {
             "Authorization":
-                "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtQGdtYWlsLmNvbSIsImlhdCI6MTcxNjQxMzY5NywiZXhwIjoxNzE3MDE4NDk3fQ.VgCaHX7effqW9pzjDYoxfyTtnjnV9Sr0lgjgYmBsjWM "
+                "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzdHJpbjMzZ0BnbWFpbC5jb20iLCJpYXQiOjE3MTY3MjYwMjUsImV4cCI6MTcxNzMzMDgyNX0.P04n1Xe2BTYHmwOkA3YTi2ohhU3jSufb_5Jlb8Fc-k4"
           },
         ),
-        data: p.toMap()
-        
-        );
+);
 
     if (response.statusCode == 200) {
-      progectmodel project = progectmodel.fromMap(response.data);
-      print(response.data);
-      return project;
+      // progectmodel project = progectmodel.fromMap(response.data);
+      // print(response.data);
+      return MessageModel(happyMessage: response.data);
     } else {
       print(response.statusCode);
       return ErrorModel(Error_maseage: "error in join_project service");
-      
     }
-  } catch (e) {
-    print("Exception");
+  }on DioException catch (e) {
+    print(e.message);
     return ExceptionModel(
         Exception_maseage: "Exception in join_project service");
   }

@@ -9,6 +9,8 @@ import 'package:progectmanaging/core/resources/colors/mycolor.dart';
 import 'package:progectmanaging/core/resources/components/myWidget.dart';
 import 'package:progectmanaging/feature/projects/TasksPage.dart';
 import 'package:progectmanaging/feature/projects/bloc/progectbloc_bloc.dart';
+import 'package:progectmanaging/feature/providerTask/listProvider.dart';
+import 'package:provider/provider.dart';
 
 class Addproview extends StatelessWidget {
   Addproview({super.key});
@@ -51,20 +53,31 @@ class Addproview extends StatelessWidget {
                   listener: (context, state) {
                     if (state is AddProjectstate) {
                       print("state is addpro");
-                         Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => TasksPage(id:state.id)));
-                          
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) =>
+                                  ChangeNotifierProvider<ListProvider>(
+                                      create: (context) => ListProvider(),
+                                      child: AddingtaskProvider(
+                                        id: state.id,
+                                      ))
+
+                              //AddingtaskProvider(id: state.id,)
+                              ));
                     }
                   },
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: InkWell(
                         onTap: () {
-                          context.read<ProgectblocBloc>().add(
-                            AddProjectevent(pro: project(projectName: projectname_controller.text, projectDescription: projectscript_controller.text, projectStatus: 'NEW',
-                            
-                            )
-                          )); 
+                          context.read<ProgectblocBloc>().add(AddProjectevent(
+                                  pro: project(
+                                projectName: projectname_controller.text,
+                                projectDescription:
+                                    projectscript_controller.text,
+                                projectStatus: 'NEW',
+                              )));
                           print("project add");
                           // Navigator.push(context, MaterialPageRoute(builder: (context)=>TasksPage()));
                         },
@@ -74,9 +87,7 @@ class Addproview extends StatelessWidget {
                   ),
                 ),
                 TextButton(
-                    onPressed: () {
-                   
-                    },
+                    onPressed: () {},
                     child: Text(
                       "make tasks for this project",
                       style: TextStyle(color: white, fontSize: 15),

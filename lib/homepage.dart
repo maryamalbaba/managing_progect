@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:progectmanaging/core/domain/models/addprogect_model.dart';
+import 'package:progectmanaging/core/domain/models/message_mode.dart';
 import 'package:progectmanaging/core/domain/models/taskss/bases_model.dart';
 import 'package:progectmanaging/core/domain/service/progects.dart';
 import 'package:progectmanaging/core/resources/asset_helper/images_name.dart';
@@ -51,7 +52,7 @@ class homepage extends StatelessWidget {
                  showModalBottomSheet(
                         context: context,
                         builder: (BuildContext context) {
-                          Future<ResultModel> response;
+                          ResultModel response;
                           return Container(
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.only(topLeft:Radius.circular(15),topRight:Radius.circular(15), ),
@@ -85,9 +86,15 @@ class homepage extends StatelessWidget {
                                   SizedBox(height: 40,),
                                   
                                  InkWell(
-                                  onTap: () {
-                                         response=   join_progect(progectmodel(name: "", description: "", status: "", createdBy: "", lastModified: "", id: int.parse(id_controller.text), createDate: ""));
+                                  onTap: ()async {
+                                         response=  await join_progect(progectmodel(name: "", description: "", status: "", createdBy: "", lastModified: "", id: int.parse(id_controller.text), createDate: ""));
+                                         if (response is MessageModel) {
+                                           
                                  print("id has sended");
+                                 
+                                         } else {
+                                           
+                                         }
                                   },
                                   child: confirm())
                                 ],
