@@ -10,8 +10,8 @@ import 'package:progectmanaging/core/resources/colors/mycolor.dart';
 import 'package:progectmanaging/core/resources/components/myWidget.dart';
 import 'package:progectmanaging/feature/projects/Addproview.dart';
 
-class homepage extends StatelessWidget {
-  homepage({super.key});
+class HomePage extends StatelessWidget {
+  HomePage({super.key});
   TextEditingController id_controller = TextEditingController();
   @override
   Widget build(BuildContext context) {

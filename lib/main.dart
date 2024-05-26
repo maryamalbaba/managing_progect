@@ -4,11 +4,9 @@ import 'package:progectmanaging/core/config/get_it_class.dart';
 import 'package:progectmanaging/feature/auth/app_manager/bloc/manager_bloc.dart';
 import 'package:progectmanaging/feature/auth/login_order/signup_view.dart';
 import 'package:progectmanaging/feature/auth/login_order/viewlogin.dart';
-import 'package:progectmanaging/feature/projects/TasksPage.dart';
-import 'package:progectmanaging/feature/providerTask/listProvider.dart';
+
 import 'package:progectmanaging/homepage.dart';
-import 'package:provider/provider.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+
 
 void main() {
   init();
@@ -33,7 +31,7 @@ class MyApp extends StatelessWidget {
               return SignupView();
             } else if (state is CheckTokenState) {
                print(" else if");
-              return homepage();
+              return HomePage();
             //  return ChangeNotifierProvider<ListProvider>(
             //     create: (context)=>ListProvider(),
             //     child: AddingtaskProvider(id: 1,));

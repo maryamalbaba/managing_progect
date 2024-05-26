@@ -1,13 +1,9 @@
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/foundation.dart';
+
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:progectmanaging/core/domain/models/addprogect_model.dart';
 import 'package:progectmanaging/core/domain/models/project.dart';
 import 'package:progectmanaging/core/resources/colors/mycolor.dart';
 import 'package:progectmanaging/core/resources/components/myWidget.dart';
-import 'package:progectmanaging/feature/projects/TasksPage.dart';
 import 'package:progectmanaging/feature/projects/bloc/progectbloc_bloc.dart';
 import 'package:progectmanaging/feature/providerTask/listProvider.dart';
 import 'package:provider/provider.dart';

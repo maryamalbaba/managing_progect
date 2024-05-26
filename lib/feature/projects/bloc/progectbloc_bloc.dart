@@ -1,6 +1,5 @@
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
-import 'package:progectmanaging/core/domain/models/addprogect_model.dart';
 import 'package:progectmanaging/core/domain/models/project.dart';
 import 'package:progectmanaging/core/domain/service/progects.dart';
 

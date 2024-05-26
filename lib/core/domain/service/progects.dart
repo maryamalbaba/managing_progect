@@ -1,6 +1,4 @@
 import 'package:dio/dio.dart';
-import 'package:flutter/material.dart';
-import 'package:progectmanaging/core/config/get_it_class.dart';
 import 'package:progectmanaging/core/domain/models/addprogect_model.dart';
 import 'package:progectmanaging/core/domain/models/message_mode.dart';
 import 'package:progectmanaging/core/domain/models/project.dart';

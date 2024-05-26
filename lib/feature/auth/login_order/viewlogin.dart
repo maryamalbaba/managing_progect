@@ -148,7 +148,7 @@ class LoginView extends StatelessWidget {
                       listener: (context, state) {
                         if(state is LoginSuccees){
                           context.read<appManagerBloc>().add(LoggedIn_event());
-                          Navigator.push(context,MaterialPageRoute(builder: (context) => homepage(),));
+                          Navigator.push(context,MaterialPageRoute(builder: (context) => HomePage(),));
                         }
                       },
                       child: ElevatedButton(

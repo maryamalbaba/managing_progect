@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:progectmanaging/core/domain/models/addprogect_model.dart';
-import 'package:progectmanaging/core/domain/models/project.dart';
 import 'package:progectmanaging/core/domain/models/taskss/addtask.dart';
 import 'package:progectmanaging/core/resources/colors/mycolor.dart';
 import 'package:progectmanaging/feature/tasks/bloc/task_bloc.dart';
